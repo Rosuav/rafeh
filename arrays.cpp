@@ -27,10 +27,14 @@ int intpair::operator <(intpair &other)
 	return (y < other.y);
 }
 
+typedef int intarray[20];
+typedef intarray *pointer_to_intarray;
+typedef pointer_to_intarray array_of_pointers[10];
+
 int main()
 {
 	printf("Hello, world!\n");
-	int array[20];
+	intarray array;
 	for (int i=0;i<20;++i)   //   for i in range(20)
 		array[i] = i * (1<<28);
 	show_elements(array,20);
