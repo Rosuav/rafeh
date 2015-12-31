@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string>
 
 void show_elements(int array[], int num_elements)
 {
@@ -11,6 +12,20 @@ struct by_lightning
 	int voltage;
 	int amperage;
 };
+
+struct intpair
+{
+	int x;
+	int y;
+	int operator <(intpair &other);
+};
+
+int intpair::operator <(intpair &other)
+{
+	if (x < other.x) return 1;
+	if (x > other.x) return 0;
+	return (y < other.y);
+}
 
 int main()
 {
@@ -27,4 +42,15 @@ int main()
 	by_lightning foo;
 	foo.voltage = 240; foo.amperage = 10;
 	printf("I have felt %d volts at %d amps across my finger.\n", foo.voltage, foo.amperage);
+	intpair q = {1,2};
+	intpair w = {1,3};
+	intpair e = {0,2};
+	intpair r = {2,4};
+	#define cmp(a,b) if (a < b) printf(#a " < " #b "\n"); if (b < a) printf(#b " < " #a "\n")
+	cmp(q,w); cmp(q,e); cmp(q,r);
+	cmp(w,e); cmp(w,r);
+	cmp(e,r);
+	std::string asdf = "asdf";
+	std::string qwer = "qwer";
+	if (asdf < qwer) printf("asdf < qwer\n");
 }
